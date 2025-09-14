@@ -2,6 +2,7 @@
 This is a simple announcement bar designed for the FM-DX Webserver.
 
 <img width="1183" height="825" alt="image" src="https://github.com/user-attachments/assets/d088c700-fd36-4298-8417-f3aa1ac89b50" />
+<figcaption>The plugin running on [my server.](https://tef.glenndx.com)</figcaption>
 
 ---
 
