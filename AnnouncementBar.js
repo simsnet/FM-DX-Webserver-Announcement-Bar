@@ -3,7 +3,7 @@ var pluginConfig = {
     name: 'Announcement Bar',
     version: '1.0',
     author: 'simsnet',
-    frontEndPath: 'AnnouncementBar/AnnouncementBar.js'
+    frontEndPath: 'AnnouncementBar/AnnouncementBarCore.js'
 }
 
 // Backend (server) changes can go here...
