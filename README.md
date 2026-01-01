@@ -7,12 +7,12 @@ The plugin running on [Glenn's TEF Server.](https://tef.glenndx.com)
 
 ---
 
-## Installation
+## Installation & Usage
 
 1. Download the latest plugin release [here.](https://github.com/simsnet/FM-DX-Webserver-Announcement-Bar/releases).
 2. Unzip the contents to your FM-DX Webserver's `/plugins` folder.
 3. Restart your server and enable the plugin in your server settings.
-4. Edit the `annText` and `annColor` variables to your liking.
+4. Go to the "Plugins" section in the server settings, edit the message and bar color, and click "Save Changes".
 5. Refresh the server page.
 
 ---
