@@ -27,19 +27,23 @@ process.nextTick(() => {
         });
 
         endpointsRouter.post('/announcement-bar/config', (req, res) => {
-            const { message, color } = req.body || {};
+    const { message, color, displaystyle } = req.body || {};
 
-            if (typeof message === 'string') {
-                announcementConfig.message = message;
-            }
+    if (typeof message === 'string') {
+        announcementConfig.message = message;
+    }
 
-            if (typeof color === 'string') {
-                announcementConfig.color = color;
-            }
+    if (typeof color === 'string') {
+        announcementConfig.color = color;
+    }
 
-            saveConfig();
-            res.json({ success: true });
-        });
+    if (Number.isInteger(displaystyle) && displaystyle >= 0 && displaystyle <= 5) {
+        announcementConfig.displaystyle = displaystyle;
+    }
+
+    saveConfig();
+    res.json({ success: true });
+});
 
         logInfo('AnnouncementBar: Endpoints registered (delayed)');
     } catch (err) {
@@ -54,7 +58,8 @@ const configFile = path.join(configDir, 'AnnouncementBar.json');
 
 const defaultConfig = {
     message: '',
-    color: ''
+    color: '',
+	displaystyle: 1
 };
 
 let announcementConfig = { ...defaultConfig };
@@ -76,7 +81,10 @@ function loadConfig() {
 
         announcementConfig = {
             message: typeof parsed.message === 'string' ? parsed.message : '',
-            color: typeof parsed.color === 'string' ? parsed.color : ''
+            color: typeof parsed.color === 'string' ? parsed.color : '',
+            displaystyle: Number.isInteger(parsed.displaystyle)
+                ? parsed.displaystyle
+                : defaultConfig.displaystyle
         };
 
         logInfo('AnnouncementBar: Config loaded');
