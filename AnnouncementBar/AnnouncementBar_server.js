@@ -1,3 +1,14 @@
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// FM-DX Webserver Announcement Bar v2.0
+// Configuration and endpoint management backend
+//
+// Author: simsnet - https://github.com/simsnet
+//
+// Additional resources from:
+// - Noobish (https://github.com/NoobishSVK)
+// - AmateurAudioDude (https://github.com/AmateurAudioDude/)
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 'use strict';
 
 const fs = require('fs');
