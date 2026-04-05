@@ -161,10 +161,6 @@ if (closeBtn && bar) {
 	overflow: visible;
 }
 
-.ann-multiline .ann-text {
-	margin: 10px 0px 10px 0px;
-}
-
 @keyframes marquee {
 	from { transform: translateX(var(--start)); }
 	to	 { transform: translateX(var(--end)); }
