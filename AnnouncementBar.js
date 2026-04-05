@@ -1,7 +1,7 @@
 // Plugin configuration, this is used in the administration when plugins are loaded
 var pluginConfig = {
     name: 'Announcement Bar',
-    version: '2.0',
+    version: '2.5',
     author: 'simsnet',
     frontEndPath: 'AnnouncementBar/AnnouncementBarCore.js'
 }
