@@ -1,5 +1,5 @@
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-// FM-DX Webserver Announcement Bar v2.0
+// FM-DX Webserver Announcement Bar v2.5
 // Main frontend
 //
 // Author: simsnet - https://github.com/simsnet
@@ -43,83 +43,131 @@ function initAnnouncementBar() {
 <div id="announcement-bar" class="ann-bar flex-container bg-phone flex-phone-column" style="padding:0 10px;">
   <div id="announcement-text"
        class="ann-container"
-       style="background-color:${annColor}; border-radius:15px; margin-top:20px; box-sizing:border-box; width:100%; max-width:1160px; padding:0 15px;">
+       style="background-color:${annColor}; border-radius:15px; margin-top:20px; box-sizing:border-box; width:100%; max-width:1160px;">
+
     <div class="marquee-viewport">
       <div class="marquee">
         <p class="ann-text">${annText}</p>
       </div>
     </div>
+
+    <button class="ann-close">
+      <i style="color: white;" class="fas fa-times"></i>
+    </button>
+
   </div>
 </div>`;
 
     const dashboardPanel = document.getElementsByClassName("canvas-container");
     if (dashboardPanel.length > 0) {
         dashboardPanel[0].insertAdjacentHTML('afterend', annBarHtml);
+		const closeBtn = document.querySelector('#announcement-bar .ann-close');
+const bar = document.getElementById('announcement-bar');
+
+if (closeBtn && bar) {
+    closeBtn.addEventListener('click', () => {
+        bar.classList.add('annbar-hide');
+    });
+}
     }
 
     const css = `
+#announcement-bar{
+	overflow:hidden;
+	max-height:200px;
+	transition:max-height .45s ease, opacity .3s ease;
+}
 
-.ann-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 15px;
-  min-height: 40px;
-  overflow: visible;
+#announcement-bar.annbar-hide{
+	max-height:0;
+	opacity:0;
+}
+
+.ann-close{
+	position:absolute;
+	right:0px;
+	top:50%;
+	transform:translateY(-50%);
+
+	width:40px;
+	height:100%;
+
+	border:none;
+	background:none;
+
+	display:flex;
+	align-items:center;
+	justify-content:center;
+
+	cursor:pointer;
+
+	z-index:10;
+	pointer-events:auto;
+}
+
+.ann-close:hover{
+	background:inherit;
+}
+
+.ann-container{
+	position:relative;
+	z-index:1;
+	padding:0px 50px 0px 20px;
+	min-height:40px;
 }
 
 .marquee-viewport {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 }
 
 .marquee {
-  position: relative;
-  white-space: nowrap;
-  will-change: transform;
-  transform: translateZ(0);  
+	position: relative;
+	white-space: nowrap;
+	will-change: transform;
+	transform: translateZ(0);	
+	padding: 10px 0px 10px 0px;
 }
 
 .ann-text {
-  margin: 0;
-  padding: 0;
-  line-height: 1.25;
-  text-align: center;
+	margin: 0;
+	padding: 0;
+	line-height: 1.25;
+	text-align: center;
 }
 
 .ann-static .marquee {
-  position: relative;
-  transform: none !important;
-  animation: none !important;
+	position: relative;
+	transform: none !important;
+	animation: none !important;
 }
 
 .ann-static .marquee-viewport {
-  justify-content: center;
+	justify-content: center;
 }
 
 .ann-multiline .marquee {
-  position: relative;
-  white-space: normal;
-  width: 100%;
+	position: relative;
+	white-space: normal;
+	width: 100%;
 }
 
 .ann-multiline .marquee-viewport {
-  overflow: visible;
+	overflow: visible;
 }
 
 .ann-multiline .ann-text {
-  margin: 10px 0px 10px 0px;
+	margin: 10px 0px 10px 0px;
 }
 
 @keyframes marquee {
-  from { transform: translateX(var(--start)); }
-  to   { transform: translateX(var(--end)); }
+	from { transform: translateX(var(--start)); }
+	to	 { transform: translateX(var(--end)); }
 }`;
 
     const style = document.createElement('style');
