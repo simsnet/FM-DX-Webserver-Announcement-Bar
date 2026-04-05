@@ -1,5 +1,5 @@
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-// FM-DX Webserver Announcement Bar v2.0
+// FM-DX Webserver Announcement Bar v2.5
 // Configuration and endpoint management backend
 //
 // Author: simsnet - https://github.com/simsnet
