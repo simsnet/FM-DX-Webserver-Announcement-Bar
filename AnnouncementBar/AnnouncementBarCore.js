@@ -1,5 +1,5 @@
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-// FM-DX Webserver Announcement Bar v2.5
+// FM-DX Webserver Announcement Bar v2.5.1
 // Main frontend
 //
 // Author: simsnet - https://github.com/simsnet
@@ -66,7 +66,15 @@ const bar = document.getElementById('announcement-bar');
 
 if (closeBtn && bar) {
     closeBtn.addEventListener('click', () => {
-        bar.classList.add('annbar-hide');
+		const h = bar.getBoundingClientRect().height;
+		bar.style.height = 'auto';
+		bar.offsetHeight;
+		bar.style.height = h + 'px';
+		bar.offsetHeight;
+		bar.classList.add('annbar-hide');
+		requestAnimationFrame(() => {
+			bar.style.height = '0px';
+		});
     });
 }
     }
@@ -74,12 +82,15 @@ if (closeBtn && bar) {
     const css = `
 #announcement-bar{
 	overflow:hidden;
-	max-height:200px;
-	transition:max-height .45s ease, opacity .3s ease;
+	height: auto;
+	transform-origin: center;
+	transition:
+	  height 0.5s ease,
+	  opacity 0.3s ease,
+	  transform 0.5s ease;
 }
 
 #announcement-bar.annbar-hide{
-	max-height:0;
 	opacity:0;
 }
 
@@ -165,6 +176,12 @@ if (closeBtn && bar) {
 	from { transform: translateX(var(--start)); }
 	to	 { transform: translateX(var(--end)); }
 }`;
+
+/* 	// Calculate automatic height for close animation
+	const el = document.querySelector('#announcement-bar');
+	el.style.maxHeight = 'none';
+	const h = el.scrollHeight;
+	el.style.setProperty('--h', h + 'px'); */
 
     const style = document.createElement('style');
     style.textContent = css;
